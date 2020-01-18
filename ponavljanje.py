@@ -10,7 +10,9 @@ attempts = 0
 with open("score_file.txt", "r") as score_file:
     score_list = json.loads(score_file.read())
 
-for score_dict in score_list:
+new_score_list = sorted(score_list, key=lambda k: k["attempts"][:3])
+
+for score_dict in new_score_list:
     print("Top score: {0}, time: {1}, players name: {2}, secret number: {3}, wrong guesses: {4}".format(score_dict.get("attempts"), score_dict.get("time"), score_dict.get("name"), score_dict.get("secret_number"), score_dict.get("wrong_guesses")))
 
 name = input("Name:")
